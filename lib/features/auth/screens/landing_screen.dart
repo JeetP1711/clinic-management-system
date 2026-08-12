@@ -65,7 +65,7 @@ class LandingScreen extends StatelessWidget {
 
               // Login Card / Action
               Container(
-                maxWidth: 380,
+                constraints: const BoxConstraints(maxWidth: 380),
                 width: double.infinity,
                 padding: const EdgeInsets.all(32),
                 decoration: BoxDecoration(

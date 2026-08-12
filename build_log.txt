@@ -1,0 +1,42 @@
+Running Gradle task 'assembleDebug'...                          
+lib/features/patients/screens/add_patient_screen.dart:248:9: Error: No named parameter with the name 'scaffoldModeBanner'.
+        scaffoldModeBanner: true,
+        ^^^^^^^^^^^^^^^^^^
+/C:/src/flutter/packages/flutter/lib/src/material/app_bar.dart:191:3: Context: Found this candidate, but the arguments don't match.
+  AppBar({
+  ^^^^^^
+lib/features/patients/screens/add_patient_screen.dart:254:13: Error: No named parameter with the name 'maxWidth'.
+            maxWidth: 700,
+            ^^^^^^^^
+/C:/src/flutter/packages/flutter/lib/src/widgets/container.dart:255:3: Context: Found this candidate, but the arguments don't match.
+  Container({
+  ^^^^^^^^^
+lib/features/auth/screens/landing_screen.dart:68:17: Error: No named parameter with the name 'maxWidth'.
+                maxWidth: 380,
+                ^^^^^^^^
+/C:/src/flutter/packages/flutter/lib/src/widgets/container.dart:255:3: Context: Found this candidate, but the arguments don't match.
+  Container({
+  ^^^^^^^^^
+lib/core/theme/app_theme.dart:51:18: Error: The argument type 'CardTheme' can't be assigned to the parameter type 'CardThemeData?'.
+ - 'CardTheme' is from 'package:flutter/src/material/card_theme.dart' ('/C:/src/flutter/packages/flutter/lib/src/material/card_theme.dart').
+ - 'CardThemeData' is from 'package:flutter/src/material/card_theme.dart' ('/C:/src/flutter/packages/flutter/lib/src/material/card_theme.dart').
+      cardTheme: CardTheme(
+                 ^
+Target kernel_snapshot_program failed: Exception
+
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:compileFlutterBuildDebug'.
+> Process 'command 'C:\src\flutter\bin\flutter.bat'' finished with non-zero exit value 1
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 7s
+Running Gradle task 'assembleDebug'...                              8.4s
+Gradle task assembleDebug failed with exit code 1

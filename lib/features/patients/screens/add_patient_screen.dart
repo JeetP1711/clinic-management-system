@@ -245,13 +245,12 @@ class _AddPatientScreenState extends State<AddPatientScreen> {
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
         ),
         elevation: 0,
-        scaffoldModeBanner: true,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(24.0),
         child: Center(
           child: Container(
-            maxWidth: 700,
+            constraints: const BoxConstraints(maxWidth: 700),
             padding: const EdgeInsets.all(28.0),
             decoration: BoxDecoration(
               color: AppColors.surface,
