@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'core/theme/app_theme.dart';
-import 'features/auth/screens/landing_screen.dart';
-import 'features/shell/app_shell.dart';
+import 'package:clinicos/core/theme/app_theme.dart';
+import 'package:clinicos/features/auth/screens/landing_screen.dart';
+import 'package:clinicos/features/shell/app_shell.dart';
 
 void main() {
   runApp(const ClinicOSApp());

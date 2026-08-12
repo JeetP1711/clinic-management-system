@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import '../../core/theme/app_colors.dart';
-import '../../core/utils/responsive.dart';
-import 'widgets/sidebar.dart';
-import '../dashboard/screens/dashboard_screen.dart';
-import '../patients/screens/patients_list_screen.dart';
-import '../patients/screens/add_patient_screen.dart';
-import '../patients/screens/patient_detail_screen.dart';
-import '../patients/controllers/patient_controller.dart';
-import '../coming_soon/coming_soon_screen.dart';
-import '../../models/patient.dart';
+import 'package:clinicos/core/theme/app_colors.dart';
+import 'package:clinicos/core/utils/responsive.dart';
+import 'package:clinicos/features/shell/widgets/sidebar.dart';
+import 'package:clinicos/features/dashboard/screens/dashboard_screen.dart';
+import 'package:clinicos/features/patients/screens/patients_list_screen.dart';
+import 'package:clinicos/features/patients/screens/add_patient_screen.dart';
+import 'package:clinicos/features/patients/screens/patient_detail_screen.dart';
+import 'package:clinicos/features/patients/controllers/patient_controller.dart';
+import 'package:clinicos/features/coming_soon/coming_soon_screen.dart';
+import 'package:clinicos/models/patient.dart';
 
 class AppShell extends StatefulWidget {
   const AppShell({super.key});

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../core/theme/app_colors.dart';
-import '../../core/utils/responsive.dart';
-import '../widgets/stat_card.dart';
-import '../../patients/controllers/patient_controller.dart';
+import 'package:clinicos/core/theme/app_colors.dart';
+import 'package:clinicos/core/utils/responsive.dart';
+import 'package:clinicos/features/dashboard/widgets/stat_card.dart';
+import 'package:clinicos/features/patients/controllers/patient_controller.dart';
 
 class DashboardScreen extends StatelessWidget {
   final PatientController patientController;

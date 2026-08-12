@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../core/theme/app_colors.dart';
+import 'package:clinicos/core/theme/app_colors.dart';
 
 class Sidebar extends StatelessWidget {
   final int selectedIndex;

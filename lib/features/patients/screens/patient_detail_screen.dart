@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../core/theme/app_colors.dart';
-import '../../../models/patient.dart';
+import 'package:clinicos/core/theme/app_colors.dart';
+import 'package:clinicos/models/patient.dart';
 
 class PatientDetailScreen extends StatelessWidget {
   final Patient patient;

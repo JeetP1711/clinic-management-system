@@ -6,5 +6,5 @@ class AppConstants {
   // TODO: ADD YOUR VALUE HERE
   // Replace this URL with your deployed Google Apps Script Web App URL
   static const String googleAppsScriptUrl =
-      'YOUR_APPS_SCRIPT_WEB_APP_URL_HERE';
+      'https://script.google.com/macros/s/AKfycbzgKyueqyGN_K8U5wzdi9jZj_O4qbszbVJ0HlqWz09GzjlwRYXfPJlfJ1EZVYyCqYvbMg/exec';
 }

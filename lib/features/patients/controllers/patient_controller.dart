@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../models/patient.dart';
-import '../../../services/patient_service.dart';
+import 'package:clinicos/models/patient.dart';
+import 'package:clinicos/services/patient_service.dart';
 
 class PatientController extends ChangeNotifier {
   final PatientService _patientService;

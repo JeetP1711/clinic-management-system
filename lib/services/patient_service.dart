@@ -1,5 +1,5 @@
-import '../models/patient.dart';
-import 'api_service.dart';
+import 'package:clinicos/models/patient.dart';
+import 'package:clinicos/services/api_service.dart';
 
 class PatientService {
   final ApiService _api;

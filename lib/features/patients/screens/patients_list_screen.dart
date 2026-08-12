@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../../core/theme/app_colors.dart';
-import '../../../core/utils/responsive.dart';
-import '../controllers/patient_controller.dart';
-import '../widgets/patient_card.dart';
-import '../widgets/patient_table.dart';
-import '../../../models/patient.dart';
+import 'package:clinicos/core/theme/app_colors.dart';
+import 'package:clinicos/core/utils/responsive.dart';
+import 'package:clinicos/features/patients/controllers/patient_controller.dart';
+import 'package:clinicos/features/patients/widgets/patient_card.dart';
+import 'package:clinicos/features/patients/widgets/patient_table.dart';
+import 'package:clinicos/models/patient.dart';
 
 class PatientsListScreen extends StatefulWidget {
   final PatientController controller;

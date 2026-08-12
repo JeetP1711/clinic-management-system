@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '../core/constants/app_constants.dart';
+import 'package:clinicos/core/constants/app_constants.dart';
 
 class ApiResponse {
   final bool success;

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import '../../../core/theme/app_colors.dart';
-import '../../../core/utils/validators.dart';
-import '../controllers/patient_controller.dart';
-import '../../../models/patient.dart';
+import 'package:clinicos/core/theme/app_colors.dart';
+import 'package:clinicos/core/utils/validators.dart';
+import 'package:clinicos/features/patients/controllers/patient_controller.dart';
+import 'package:clinicos/models/patient.dart';
 
 class AddPatientScreen extends StatefulWidget {
   final PatientController controller;
