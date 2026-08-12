@@ -14,74 +14,75 @@ class PatientCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.only(bottom: 12),
+    final initial = patient.fullName.isNotEmpty ? patient.fullName[0].toUpperCase() : 'P';
+
+    return Container(
+      margin: const EdgeInsets.only(bottom: 10),
+      decoration: BoxDecoration(
+        color: AppColors.surface,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: AppColors.border),
+      ),
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(12),
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          padding: const EdgeInsets.all(14.0),
+          child: Row(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: Text(
+              CircleAvatar(
+                radius: 20,
+                backgroundColor: AppColors.primarySurface,
+                child: Text(
+                  initial,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.primary,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAlignment.start,
+                  children: [
+                    Text(
                       patient.fullName,
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                          ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                        color: AppColors.textPrimary,
+                      ),
                     ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: patient.status == 'Active'
-                          ? AppColors.successBackground
-                          : AppColors.surfaceVariant,
-                      borderRadius: BorderRadius.circular(6),
+                    const SizedBox(height: 2),
+                    Text(
+                      patient.patientId,
+                      style: const TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.primary,
+                      ),
                     ),
-                    child: Text(
-                      patient.status,
-                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                            color: patient.status == 'Active'
-                                ? AppColors.success
-                                : AppColors.textMuted,
-                            fontWeight: FontWeight.w600,
-                          ),
+                    const SizedBox(height: 2),
+                    Text(
+                      '${patient.mobile} • ${patient.gender} • ${patient.age} years',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        fontSize: 12,
+                        color: AppColors.textSecondary,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-              const SizedBox(height: 4),
-              Text(
-                patient.patientId,
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: AppColors.primary,
-                      fontWeight: FontWeight.w600,
-                      fontFamily: 'monospace',
-                    ),
-              ),
-              const SizedBox(height: 12),
-              Row(
-                children: [
-                  const Icon(Icons.phone_outlined, size: 14, color: AppColors.textMuted),
-                  const SizedBox(width: 6),
-                  Text(
-                    patient.mobile,
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ),
-                  const SizedBox(width: 16),
-                  const Icon(Icons.person_outline, size: 14, color: AppColors.textMuted),
-                  const SizedBox(width: 6),
-                  Text(
-                    '${patient.age} Years • ${patient.gender}',
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ),
-                ],
+              const Icon(
+                Icons.chevron_right,
+                color: AppColors.textMuted,
+                size: 22,
               ),
             ],
           ),
