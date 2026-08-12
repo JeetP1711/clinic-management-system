@@ -40,7 +40,7 @@ class DashboardScreen extends StatelessWidget {
               final recentPatients = patientController.patients.take(5).toList();
 
               return Column(
-                crossAxisAlignment: CrossAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Top Greeting Header
                   Row(
@@ -48,7 +48,7 @@ class DashboardScreen extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Column(
-                          crossAxisAlignment: CrossAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               _getGreeting(),
@@ -173,7 +173,7 @@ class DashboardScreen extends StatelessWidget {
                             const SizedBox(width: 12),
                             const Expanded(
                               child: Column(
-                                crossAxisAlignment: CrossAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text('Rahul Patel', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: AppColors.textPrimary)),
                                   Text('General Consultation • Dr. Jeet Patel', style: TextStyle(fontSize: 12, color: AppColors.textSecondary)),
