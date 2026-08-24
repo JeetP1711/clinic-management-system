@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:clinicos/core/theme/app_colors.dart';
 import 'package:clinicos/core/utils/responsive.dart';
+import 'package:clinicos/features/documents/screens/reports_documents_tab.dart';
 import 'package:clinicos/models/patient.dart';
 
 class PatientDetailScreen extends StatelessWidget {
@@ -34,7 +35,7 @@ class PatientDetailScreen extends StatelessWidget {
             tabs: [
               Tab(text: 'Overview'),
               Tab(text: 'Visits'),
-              Tab(text: 'Reports'),
+              Tab(text: 'Reports & Docs'),
               Tab(text: 'Prescriptions'),
               Tab(text: 'Appointments'),
               Tab(text: 'Billing'),
@@ -121,7 +122,7 @@ class PatientDetailScreen extends StatelessWidget {
                 children: [
                   _buildOverviewTab(context, isMobile),
                   _buildComingSoonTab('Visits'),
-                  _buildComingSoonTab('Reports & Documents'),
+                  ReportsDocumentsTab(patient: patient),
                   _buildComingSoonTab('Prescriptions'),
                   _buildComingSoonTab('Appointments'),
                   _buildComingSoonTab('Billing'),
