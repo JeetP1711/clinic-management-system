@@ -32,6 +32,8 @@ function doGet(e) {
       return handleSearchPatients(params.query);
     } else if (action === 'getPatientDocuments') {
       return handleGetPatientDocuments(params.patient_id);
+    } else if (action === 'getDocument') {
+      return handleGetDocument(params.document_id);
     }
     
     return ResponseHelper.error('Invalid GET action: ' + action);

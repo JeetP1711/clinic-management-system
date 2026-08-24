@@ -218,3 +218,55 @@ function handleDeleteDocument(data) {
 
   return ResponseHelper.error('Document not found');
 }
+
+function handleGetDocument(documentId) {
+  if (!documentId) {
+    return ResponseHelper.error('Document ID is required');
+  }
+
+  var docsSheet = SheetService.getDocumentsSheet();
+  var lastRow = docsSheet.getLastRow();
+
+  if (lastRow <= 1) {
+    return ResponseHelper.error('Document not found');
+  }
+
+  var values = docsSheet.getRange(2, 1, lastRow - 1, 16).getValues();
+  for (var i = 0; i < values.length; i++) {
+    var row = values[i];
+    if (row[0].toString() === documentId.toString() && row[15].toString() !== 'Deleted') {
+      var driveFileId = row[6].toString();
+      var base64Data = '';
+      try {
+        if (driveFileId) {
+          var file = DriveApp.getFileById(driveFileId);
+          var blob = file.getBlob();
+          base64Data = Utilities.base64Encode(blob.getBytes());
+        }
+      } catch (e) {}
+
+      return ResponseHelper.success({
+        document_id: row[0].toString(),
+        patient_id: row[1].toString(),
+        file_name: row[2].toString(),
+        file_type: row[3].toString(),
+        mime_type: row[4].toString(),
+        document_type: row[5].toString(),
+        drive_file_id: row[6].toString(),
+        drive_folder_id: row[7].toString(),
+        file_url: row[8].toString(),
+        document_date: row[9].toString(),
+        related_visit_id: row[10].toString(),
+        notes: row[11].toString(),
+        uploaded_by: row[12].toString(),
+        uploaded_at: row[13].toString(),
+        file_size: parseInt(row[14] || 0, 10),
+        status: row[15].toString(),
+        file_data: base64Data
+      });
+    }
+  }
+
+  return ResponseHelper.error('Document not found');
+}
+

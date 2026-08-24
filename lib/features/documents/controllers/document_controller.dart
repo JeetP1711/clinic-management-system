@@ -3,6 +3,7 @@ import 'package:clinicos/models/patient_document.dart';
 import 'package:clinicos/services/document_service.dart';
 
 enum DocumentSortOption { newest, oldest, nameAsc, nameDesc, sizeDesc, sizeAsc }
+enum DateRangeFilterOption { all, today, thisWeek, thisMonth, custom }
 
 class DocumentController extends ChangeNotifier {
   final DocumentService _service;
@@ -15,6 +16,8 @@ class DocumentController extends ChangeNotifier {
   String _selectedCategory = 'All';
   String _searchQuery = '';
   DocumentSortOption _sortOption = DocumentSortOption.newest;
+  DateRangeFilterOption _dateFilterOption = DateRangeFilterOption.all;
+  DateTimeRange? _customDateRange;
 
   DocumentController({DocumentService? service})
       : _service = service ?? DocumentService();
@@ -25,6 +28,8 @@ class DocumentController extends ChangeNotifier {
   String get selectedCategory => _selectedCategory;
   String get searchQuery => _searchQuery;
   DocumentSortOption get sortOption => _sortOption;
+  DateRangeFilterOption get dateFilterOption => _dateFilterOption;
+  DateTimeRange? get customDateRange => _customDateRange;
 
   int get totalCount => _allDocuments.length;
 

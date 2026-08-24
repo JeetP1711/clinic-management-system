@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:clinicos/models/patient_document.dart';
 import 'package:clinicos/services/api_service.dart';
@@ -85,8 +86,23 @@ class DocumentService {
     }
   }
 
-  Future<File> downloadAndCacheFile(String url, String fileName) async {
-    // Construct Google Drive direct download URL if file_url points to view
+  Future<Map<String, dynamic>> getDocument(String documentId) async {
+    final response = await _apiService.get('getDocument', {
+      'document_id': documentId,
+    });
+
+    if (response.success && response.data != null) {
+      return Map<String, dynamic>.from(response.data);
+    } else {
+      throw Exception(response.message);
+    }
+  }
+
+  Future<File> downloadAndCacheFile(String url, String fileName, {String? documentId}) async {
+    final tempDir = await getTemporaryDirectory();
+    final file = File('${tempDir.path}/$fileName');
+
+    // 1. Try direct Google Drive download URL
     String downloadUrl = url;
     if (url.contains('drive.google.com/file/d/')) {
       final matches = RegExp(r'/file/d/([^/]+)').firstMatch(url);
@@ -96,14 +112,30 @@ class DocumentService {
       }
     }
 
-    final response = await http.get(Uri.parse(downloadUrl));
-    if (response.statusCode != 200) {
-      throw Exception('Failed to download file from Google Drive (Status: ${response.statusCode})');
+    try {
+      if (downloadUrl.isNotEmpty && downloadUrl.startsWith('http')) {
+        final response = await http.get(Uri.parse(downloadUrl)).timeout(const Duration(seconds: 15));
+        if (response.statusCode == 200 && response.bodyBytes.isNotEmpty) {
+          await file.writeAsBytes(response.bodyBytes);
+          return file;
+        }
+      }
+    } catch (_) {
+      // Fallthrough to backend proxy fallback below
     }
 
-    final tempDir = await getTemporaryDirectory();
-    final file = File('${tempDir.path}/$fileName');
-    await file.writeAsBytes(response.bodyBytes);
-    return file;
+    // 2. Fallback: fetch binary file_data via Apps Script proxy if documentId provided
+    if (documentId != null && documentId.isNotEmpty) {
+      final data = await getDocument(documentId);
+      final base64Str = data['file_data']?.toString();
+      if (base64Str != null && base64Str.isNotEmpty) {
+        final bytes = base64Decode(base64Str);
+        await file.writeAsBytes(bytes);
+        return file;
+      }
+    }
+
+    throw Exception('Failed to download document file. Please check network connection.');
   }
 }
+
