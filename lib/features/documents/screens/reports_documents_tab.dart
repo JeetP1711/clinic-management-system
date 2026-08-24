@@ -94,7 +94,60 @@ class _ReportsDocumentsTabState extends State<ReportsDocumentsTab> {
                         ),
                       ),
                     ),
-                    const SizedBox(width: 10),
+                    const SizedBox(width: 8),
+                    PopupMenuButton<DateRangeFilterOption>(
+                      icon: Container(
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: _controller.dateFilterOption != DateRangeFilterOption.all ? AppColors.primarySurface : AppColors.surface,
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(color: _controller.dateFilterOption != DateRangeFilterOption.all ? AppColors.primary : AppColors.border),
+                        ),
+                        child: Icon(
+                          Icons.calendar_today_rounded,
+                          color: _controller.dateFilterOption != DateRangeFilterOption.all ? AppColors.primary : AppColors.textSecondary,
+                          size: 18,
+                        ),
+                      ),
+                      tooltip: 'Filter by Date',
+                      onSelected: (option) async {
+                        if (option == DateRangeFilterOption.custom) {
+                          final range = await showDateRangePicker(
+                            context: context,
+                            firstDate: DateTime(2000),
+                            lastDate: DateTime.now().add(const Duration(days: 365)),
+                          );
+                          if (range != null) {
+                            _controller.setDateFilterOption(DateRangeFilterOption.custom, range);
+                          }
+                        } else {
+                          _controller.setDateFilterOption(option);
+                        }
+                      },
+                      itemBuilder: (ctx) => [
+                        const PopupMenuItem(
+                          value: DateRangeFilterOption.all,
+                          child: Text('All Dates'),
+                        ),
+                        const PopupMenuItem(
+                          value: DateRangeFilterOption.today,
+                          child: Text('Today'),
+                        ),
+                        const PopupMenuItem(
+                          value: DateRangeFilterOption.thisWeek,
+                          child: Text('This Week'),
+                        ),
+                        const PopupMenuItem(
+                          value: DateRangeFilterOption.thisMonth,
+                          child: Text('This Month'),
+                        ),
+                        const PopupMenuItem(
+                          value: DateRangeFilterOption.custom,
+                          child: Text('Custom Date Range...'),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(width: 8),
                     PopupMenuButton<DocumentSortOption>(
                       icon: Container(
                         padding: const EdgeInsets.all(12),

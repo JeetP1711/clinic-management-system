@@ -96,6 +96,13 @@ class DocumentController extends ChangeNotifier {
     notifyListeners();
   }
 
+  void setDateFilterOption(DateRangeFilterOption option, [DateTimeRange? customRange]) {
+    _dateFilterOption = option;
+    _customDateRange = customRange;
+    _applyFilterAndSort();
+    notifyListeners();
+  }
+
   void _applyFilterAndSort() {
     List<PatientDocument> result = List.from(_allDocuments);
 
@@ -124,6 +131,33 @@ class DocumentController extends ChangeNotifier {
       } else {
         result = result.where((d) => d.documentType == _selectedCategory).toList();
       }
+    }
+
+    // Filter by Date Range
+    if (_dateFilterOption != DateRangeFilterOption.all) {
+      final now = DateTime.now();
+      result = result.where((d) {
+        DateTime? docDate;
+        try {
+          docDate = DateTime.parse(d.documentDate);
+        } catch (_) {}
+        if (docDate == null) return true;
+
+        if (_dateFilterOption == DateRangeFilterOption.today) {
+          return docDate.year == now.year && docDate.month == now.month && docDate.day == now.day;
+        } else if (_dateFilterOption == DateRangeFilterOption.thisWeek) {
+          final startOfWeek = now.subtract(Duration(days: now.weekday - 1));
+          final startOfDay = DateTime(startOfWeek.year, startOfWeek.month, startOfWeek.day);
+          return docDate.isAfter(startOfDay.subtract(const Duration(seconds: 1)));
+        } else if (_dateFilterOption == DateRangeFilterOption.thisMonth) {
+          return docDate.year == now.year && docDate.month == now.month;
+        } else if (_dateFilterOption == DateRangeFilterOption.custom && _customDateRange != null) {
+          final start = DateTime(_customDateRange!.start.year, _customDateRange!.start.month, _customDateRange!.start.day);
+          final end = DateTime(_customDateRange!.end.year, _customDateRange!.end.month, _customDateRange!.end.day, 23, 59, 59);
+          return docDate.isAfter(start.subtract(const Duration(seconds: 1))) && docDate.isBefore(end.add(const Duration(seconds: 1)));
+        }
+        return true;
+      }).toList();
     }
 
     // Filter by search query
