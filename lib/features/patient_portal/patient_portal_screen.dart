@@ -94,9 +94,7 @@ class _PatientPortalScreenState extends State<PatientPortalScreen> {
           });
         },
         items: const [
-          BottomNavigationBarThemeData().selectedItemColor != null
-              ? BottomNavigationBarItem(icon: Icon(Icons.folder_shared_rounded), label: 'My Documents')
-              : BottomNavigationBarItem(icon: Icon(Icons.folder_shared_rounded), label: 'My Documents'),
+          BottomNavigationBarItem(icon: Icon(Icons.folder_shared_rounded), label: 'My Documents'),
           BottomNavigationBarItem(icon: Icon(Icons.history_rounded), label: 'Medical History'),
           BottomNavigationBarItem(icon: Icon(Icons.person_outline_rounded), label: 'Profile'),
         ],
@@ -312,7 +310,7 @@ class _PatientPortalScreenState extends State<PatientPortalScreen> {
                       color: AppColors.primarySurface,
                       borderRadius: BorderRadius.circular(4),
                     ),
-                    child: Text(widget.patient.createdAt ?? 'Registered', style: const TextStyle(fontSize: 11, color: AppColors.primary, fontWeight: FontWeight.bold)),
+                    child: Text(widget.patient.createdAt.isNotEmpty ? widget.patient.createdAt : 'Registered', style: const TextStyle(fontSize: 11, color: AppColors.primary, fontWeight: FontWeight.bold)),
                   ),
                 ],
               ),

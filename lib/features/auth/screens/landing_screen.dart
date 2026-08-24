@@ -50,7 +50,7 @@ class _LandingScreenState extends State<LandingScreen> {
         // Try direct lookup if exact ID
         try {
           final p = await _patientService.getPatient(query);
-          if (mounted) {
+          if (p != null && mounted) {
             widget.onPatientLogin(p);
             return;
           }
@@ -61,7 +61,8 @@ class _LandingScreenState extends State<LandingScreen> {
         }
       } else {
         if (mounted) {
-          widget.onPatientLogin(patients.first);
+          final p = patients.first;
+          widget.onPatientLogin(p);
         }
       }
     } catch (e) {

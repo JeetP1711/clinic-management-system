@@ -112,7 +112,7 @@ class _UploadDocumentModalState extends State<UploadDocumentModal> {
 
   Future<void> _pickFile() async {
     try {
-      final result = await FilePicker.platform.pickFiles(
+      final result = await (FilePicker.platform as dynamic).pickFiles(
         type: FileType.custom,
         allowedExtensions: ['pdf', 'jpg', 'jpeg', 'png', 'webp'],
         allowMultiple: false,
