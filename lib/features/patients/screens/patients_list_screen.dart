@@ -54,7 +54,7 @@ class _PatientsListScreenState extends State<PatientsListScreen> {
         child: Padding(
           padding: EdgeInsets.all(isMobile ? 16.0 : 24.0),
           child: Column(
-            crossAxisAlignment: CrossAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Search & Filter Row
               Row(

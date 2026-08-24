@@ -47,7 +47,7 @@ class MoreScreen extends StatelessWidget {
                   const SizedBox(width: 12),
                   const Expanded(
                     child: Column(
-                      crossAxisAlignment: CrossAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           'Clinic Management Hub',
@@ -88,7 +88,7 @@ class MoreScreen extends StatelessWidget {
                       border: Border.all(color: AppColors.border),
                     ),
                     child: Column(
-                      crossAxisAlignment: CrossAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(

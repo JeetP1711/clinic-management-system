@@ -65,7 +65,7 @@ class PatientDetailScreen extends StatelessWidget {
                   const SizedBox(width: 12),
                   Expanded(
                     child: Column(
-                      crossAxisAlignment: CrossAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
                           children: [
@@ -139,7 +139,7 @@ class PatientDetailScreen extends StatelessWidget {
     return SingleChildScrollView(
       padding: EdgeInsets.all(isMobile ? 16 : 24),
       child: Column(
-        crossAxisAlignment: CrossAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (isMobile) ...[
             _buildDemographicsCard(),
@@ -151,7 +151,7 @@ class PatientDetailScreen extends StatelessWidget {
             _buildDriveIntegrationCard(),
           ] else ...[
             Row(
-              crossAxisAlignment: CrossAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(child: _buildDemographicsCard()),
                 const SizedBox(width: 16),
@@ -183,7 +183,7 @@ class PatientDetailScreen extends StatelessWidget {
         border: Border.all(color: AppColors.border),
       ),
       child: Column(
-        crossAxisAlignment: CrossAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text('Personal Information', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: AppColors.textPrimary)),
           const SizedBox(height: 14),
@@ -209,7 +209,7 @@ class PatientDetailScreen extends StatelessWidget {
         border: Border.all(color: AppColors.border),
       ),
       child: Column(
-        crossAxisAlignment: CrossAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text('Medical Information', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: AppColors.textPrimary)),
           const SizedBox(height: 14),
@@ -230,7 +230,7 @@ class PatientDetailScreen extends StatelessWidget {
         border: Border.all(color: AppColors.border),
       ),
       child: Column(
-        crossAxisAlignment: CrossAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text('Emergency Contact', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: AppColors.textPrimary)),
           const SizedBox(height: 14),
@@ -251,7 +251,7 @@ class PatientDetailScreen extends StatelessWidget {
         border: Border.all(color: AppColors.border),
       ),
       child: Column(
-        crossAxisAlignment: CrossAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text('Google Drive Folder', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: AppColors.textPrimary)),
           const SizedBox(height: 14),
@@ -285,7 +285,7 @@ class PatientDetailScreen extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10.0),
       child: Row(
-        crossAxisAlignment: CrossAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
             width: 120,
@@ -319,7 +319,7 @@ class PatientDetailScreen extends StatelessWidget {
       itemBuilder: (context, index) {
         final item = historyTimeline[index];
         return Row(
-          crossAxisAlignment: CrossAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Column(
               children: [
@@ -345,7 +345,7 @@ class PatientDetailScreen extends StatelessWidget {
                   border: Border.all(color: AppColors.border),
                 ),
                 child: Column(
-                  crossAxisAlignment: CrossAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
