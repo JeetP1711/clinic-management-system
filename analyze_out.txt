@@ -1,0 +1,26 @@
+Analyzing clinic management system...                           
+
+   info - 'background' is deprecated and shouldn't be used. Use surface instead. This feature was deprecated after v3.18.0-0.1.pre - lib\core\theme\app_theme.dart:17:9 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\auth\screens\landing_screen.dart:98:68 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\auth\screens\landing_screen.dart:101:48 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\auth\screens\landing_screen.dart:208:43 - deprecated_member_use
+   info - 'value' is deprecated and shouldn't be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre - lib\features\documents\widgets\document_card.dart:114:15 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\documents\widgets\document_card.dart:191:53 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\documents\widgets\document_card.dart:221:63 - deprecated_member_use
+   info - 'Share' is deprecated and shouldn't be used. Use SharePlus instead - lib\features\documents\widgets\document_viewer_screen.dart:65:13 - deprecated_member_use
+   info - 'shareXFiles' is deprecated and shouldn't be used. Use SharePlus.instance.share() instead - lib\features\documents\widgets\document_viewer_screen.dart:65:19 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\documents\widgets\upload_document_modal.dart:308:50 - deprecated_member_use
+   info - 'value' is deprecated and shouldn't be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre - lib\features\documents\widgets\upload_document_modal.dart:355:17 - deprecated_member_use
+   info - 'value' is deprecated and shouldn't be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre - lib\features\documents\widgets\upload_document_modal.dart:398:19 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\documents\widgets\upload_document_modal.dart:438:61 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\documents\widgets\upload_document_modal.dart:517:30 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\more\more_screen.dart:38:66 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\more\more_screen.dart:97:47 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\patient_portal\patient_portal_screen.dart:130:68 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\features\patients\screens\add_patient_screen.dart:159:66 - deprecated_member_use
+   info - 'value' is deprecated and shouldn't be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre - lib\features\patients\screens\add_patient_screen.dart:350:25 - deprecated_member_use
+   info - 'value' is deprecated and shouldn't be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre - lib\features\patients\screens\add_patient_screen.dart:383:31 - deprecated_member_use
+   info - 'value' is deprecated and shouldn't be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre - lib\features\patients\screens\add_patient_screen.dart:399:23 - deprecated_member_use
+   info - 'MaterialStateProperty' is deprecated and shouldn't be used. Use WidgetStateProperty instead. Moved to the Widgets layer to make code available outside of Material. This feature was deprecated after v3.19.0-0.3.pre - lib\features\patients\widgets\patient_table.dart:26:28 - deprecated_member_use
+   info - 'dataRowHeight' is deprecated and shouldn't be used. Migrate to use dataRowMinHeight and dataRowMaxHeight instead. This feature was deprecated after v3.7.0-5.0.pre - lib\features\patients\widgets\patient_table.dart:27:11 - deprecated_member_use
+
