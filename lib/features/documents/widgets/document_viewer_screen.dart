@@ -40,6 +40,7 @@ class _DocumentViewerScreenState extends State<DocumentViewerScreen> {
       final file = await _service.downloadAndCacheFile(
         widget.document.fileUrl,
         widget.document.fileName,
+        documentId: widget.document.documentId,
       );
       if (mounted) {
         setState(() {
