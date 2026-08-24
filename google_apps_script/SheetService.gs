@@ -23,14 +23,22 @@ var SheetService = {
       var sheet = ss.getSheetByName(tabName);
       if (!sheet) {
         sheet = ss.insertSheet(tabName);
-        if (tabName === 'Patients') {
-          sheet.appendRow([
-            'patient_id', 'full_name', 'mobile', 'date_of_birth', 'gender',
-            'blood_group', 'email', 'address', 'emergency_contact',
-            'emergency_contact_name', 'status', 'created_at', 'updated_at', 'drive_folder_id'
-          ]);
-          sheet.getRange(1, 1, 1, 14).setFontWeight('bold');
-        }
+      }
+      if (tabName === 'Patients' && sheet.getLastRow() === 0) {
+        sheet.appendRow([
+          'patient_id', 'full_name', 'mobile', 'date_of_birth', 'gender',
+          'blood_group', 'email', 'address', 'emergency_contact',
+          'emergency_contact_name', 'status', 'created_at', 'updated_at', 'drive_folder_id'
+        ]);
+        sheet.getRange(1, 1, 1, 14).setFontWeight('bold');
+      } else if (tabName === 'Documents' && sheet.getLastRow() === 0) {
+        sheet.appendRow([
+          'document_id', 'patient_id', 'file_name', 'file_type', 'mime_type',
+          'document_type', 'drive_file_id', 'drive_folder_id', 'file_url',
+          'document_date', 'related_visit_id', 'notes', 'uploaded_by',
+          'uploaded_at', 'file_size', 'status'
+        ]);
+        sheet.getRange(1, 1, 1, 16).setFontWeight('bold');
       }
     });
   },
@@ -40,6 +48,8 @@ var SheetService = {
     var sheet = ss.getSheetByName('Patients');
     if (!sheet) {
       sheet = ss.insertSheet('Patients');
+    }
+    if (sheet.getLastRow() === 0) {
       sheet.appendRow([
         'patient_id', 'full_name', 'mobile', 'date_of_birth', 'gender',
         'blood_group', 'email', 'address', 'emergency_contact',
@@ -50,12 +60,64 @@ var SheetService = {
     return sheet;
   },
 
+  getDocumentsSheet: function() {
+    var ss = this.getSpreadsheet();
+    var sheet = ss.getSheetByName('Documents');
+    if (!sheet) {
+      sheet = ss.insertSheet('Documents');
+    }
+    if (sheet.getLastRow() === 0) {
+      sheet.appendRow([
+        'document_id', 'patient_id', 'file_name', 'file_type', 'mime_type',
+        'document_type', 'drive_file_id', 'drive_folder_id', 'file_url',
+        'document_date', 'related_visit_id', 'notes', 'uploaded_by',
+        'uploaded_at', 'file_size', 'status'
+      ]);
+      sheet.getRange(1, 1, 1, 16).setFontWeight('bold');
+    }
+    return sheet;
+  },
+
   generateNextPatientId: function(sheet) {
     var lock = LockService.getScriptLock();
     try {
-      lock.waitLock(10000); // 10s wait lock for concurrency protection
+      lock.waitLock(10000);
       var year = new Date().getFullYear();
       var prefix = 'PAT-' + year + '-';
+      var lastRow = sheet.getLastRow();
+      
+      if (lastRow <= 1) {
+        return prefix + '000001';
+      }
+
+      var ids = sheet.getRange(2, 1, lastRow - 1, 1).getValues();
+      var maxSeq = 0;
+      
+      for (var i = 0; i < ids.length; i++) {
+        var idStr = ids[i][0].toString();
+        if (idStr.indexOf(prefix) === 0) {
+          var seqPart = idStr.substring(prefix.length);
+          var seqNum = parseInt(seqPart, 10);
+          if (!isNaN(seqNum) && seqNum > maxSeq) {
+            maxSeq = seqNum;
+          }
+        }
+      }
+
+      var nextSeq = maxSeq + 1;
+      var padded = ('00000' + nextSeq).slice(-6);
+      return prefix + padded;
+    } finally {
+      lock.releaseLock();
+    }
+  },
+
+  generateNextDocumentId: function(sheet) {
+    var lock = LockService.getScriptLock();
+    try {
+      lock.waitLock(10000);
+      var year = new Date().getFullYear();
+      var prefix = 'DOC-' + year + '-';
       var lastRow = sheet.getLastRow();
       
       if (lastRow <= 1) {

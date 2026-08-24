@@ -5,6 +5,12 @@ function doPost(e) {
     
     if (action === 'createPatient') {
       return handleCreatePatient(contents);
+    } else if (action === 'uploadDocument') {
+      return handleUploadDocument(contents);
+    } else if (action === 'updateDocument') {
+      return handleUpdateDocument(contents);
+    } else if (action === 'deleteDocument') {
+      return handleDeleteDocument(contents);
     }
     
     return ResponseHelper.error('Invalid POST action: ' + action);
@@ -24,6 +30,8 @@ function doGet(e) {
       return handleGetPatient(params.patient_id);
     } else if (action === 'searchPatients') {
       return handleSearchPatients(params.query);
+    } else if (action === 'getPatientDocuments') {
+      return handleGetPatientDocuments(params.patient_id);
     }
     
     return ResponseHelper.error('Invalid GET action: ' + action);
